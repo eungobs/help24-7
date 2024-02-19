@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help24/7</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        select, button {
+            margin-bottom: 20px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .phoneNumber {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Help24/7</h1>
+        <select id="emergencyType">
+            <option value="">Select Emergency Type</option>
+            <option value="police">Police</option>
+            <option value="ambulance">Ambulance</option>
+            <option value="fireCell">Fire Department (Cell: 112)</option>
+            <option value="fireLandline">Fire Department (Landline: 10177)</option>
+            <option value="mountainRescue">Mountain Rescue</option>
+            <option value="poison">Poison Control</option>
+            <option value="childline">Childline</option>
+            <option value="lifeLine">Life Line (Counseling)</option>
+            <option value="genderBasedViolence">Gender Based Violence</option>
+            <option value="autoMobileAssociation">Auto Mobile Association Rescue</option>
+            <option value="seaRescue">Sea Rescue</option>
+            <option value="SANCA">SANCA</option>
+        </select>
+        <button id="callButton">Call Emergency Services</button>
+        <div id="phoneNumber" class="phoneNumber"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const callButton = document.getElementById('callButton');
+            const phoneNumberElement = document.getElementById('phoneNumber');
+
+            callButton.addEventListener('click', async () => {
+                const emergencyType = document.getElementById('emergencyType').value;
+                let phoneNumber = '';
+
+                switch (emergencyType) {
+                    case 'police':
+                        phoneNumber = '10111';
+                        break;
+                    case 'ambulance':
+                        phoneNumber = '112'; 
+                        break;
+                    case 'fireCell':
+                        phoneNumber = '112'; 
+                        break;
+                    case 'fireLandline':
+                        phoneNumber = '10177'; 
+                        break;
+                    case 'mountainRescue':
+                        phoneNumber = '0219489900'; 
+                        break;
+                    case 'poison':
+                        phoneNumber = '0861555777'; 
+                        break;
+                    case 'childline':
+                        phoneNumber = '116/0800055555'; 
+                        break;
+                    case 'lifeLine':
+                        phoneNumber = '0214611113'; 
+                        break;
+                    case 'genderBasedViolence':
+                        phoneNumber = '0800428428'; 
+                        break;
+                    case 'autoMobileAssociation':
+                        phoneNumber = '0861000234'; 
+                        break;
+                    case 'seaRescue':
+                        phoneNumber = '0214493500/0313618567'; 
+                        break;
+                    case 'SANCA':
+                        phoneNumber = '0125421121/0117816410';
+                        break;
+                    default:
+                        break;
+                }
+
+                
+                let htmlContent = '';
+                if (phoneNumber.includes('/')) {
+                    const numbers = phoneNumber.split('/');
+                    numbers.forEach(number => {
+                        htmlContent += `Phone Number: <a href="tel:${number}">${number}</a><br>`;
+                    });
+                } else {
+                    htmlContent = `Phone Number: <a href="tel:${phoneNumber}">${phoneNumber}</a>`;
+                }
+
+                
+                phoneNumberElement.innerHTML = htmlContent;
+            });
+        });
+    </script>
+</body>
+</html>
