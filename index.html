@@ -70,7 +70,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Help24/7</h1>
+        <h1>Help24/7 📞⚠️</h1>
         <select id="emergencyType">
             <option value="">Select Emergency Type</option>
             <option value="police">Police</option>
@@ -85,6 +85,7 @@
             <option value="autoMobileAssociation">Auto Mobile Association Rescue</option>
             <option value="seaRescue">Sea Rescue</option>
             <option value="SANCA">SANCA</option>
+            <option value="POWA">POWA</option>
         </select>
         <button id="callButton">Call Emergency Services</button>
         <div id="phoneNumber" class="phoneNumber"></div>
@@ -135,6 +136,9 @@
                         break;
                     case 'SANCA':
                         phoneNumber = '0125421121/0117816410';
+                        break;
+                    case 'POWA':
+                        phoneNumber = '0123422222'
                         break;
                     default:
                         break;
